@@ -498,6 +498,8 @@ local spin = inf:addSection("Infinity Spin")
         player.statz.spins:Destroy()
         game:GetService('TeleportService'):Teleport(game.PlaceId, player)	 
     end)
+	
+	local currentelement = inf:addSection("currentkg coming soon")
 end
 
 --Four Special Page
@@ -595,21 +597,42 @@ local spin = inf:addSection("Infinity Spin")
         game:GetService('TeleportService'):Teleport(game.PlaceId, player)	 
     end)
 	
-	local currentelement = inf:addSection("Current Element")
+	local currentelement = inf:addSection("currentelement coming soon")
 	
-    while wait() do
-	    for _,g in pairs(game.CoreGui:GetDescendants()) do
-            if g.Name == "Current Element" then 
-               g.Container.Title.Text = "Current Element:", evalue
-            end
-        end
-	end
+	--[[
+	spawn(function()
+		while wait() do
+		
+		local playerslots1 = game.Players.LocalPlayer.statz.main.element1.Value
+	    local playerslots2 = game.Players.LocalPlayer.statz.main.element2.Value
+	    local playerslots3 = game.Players.LocalPlayer.statz.main.element3.Value
+	    local playerslots4 = game.Players.LocalPlayer.statz.main.element4.Value
+            	
+            	evalue = eslot.Value
+            	
+            	if evalue ~= a1 and evalue ~= a2 and evalue ~= a3 and evalue ~= a4 and evalue ~= a5 then
+            		evalue = eslot.Value
+            		for _,g in pairs(game.CoreGui:GetDescendants()) do
+                        if g.Name == "currentelement" then 
+                            g.Container.Title.Text = "Current Elements1:"
+			                 wait(5)
+			                 g.Container.Title.Text = "Current Elements2:",playerslots1,playerslots2
+                        end
+                    end
+            		wait(.2)
+            		evalue = eslot.Value
+            	else
+            		print("You have got: " .. evalue)
+             	end
+		    end
+		end)
+	--]]
 end
 
 
 --Five page
 local page5 = scorpion:addPage("Discord", 5012544693)
-local Discord = page5:addSection("Mission Farm")
+local Discord = page5:addSection("SlayerShop")
 
 Discord:addButton("Copy Discord Link", function()
     setclipboard("https://discord.gg/q8ppJ8D")
@@ -619,12 +642,16 @@ end)
 local settings = scorpion:addPage("Settings", 5012544693)
 local colors = settings:addSection("Colors")
 local setting = settings:addSection("Settings")
-
+	
 setting:addKeybind("Show/Hide Settings", Enum.KeyCode.Backquote, function()
 print("Activated Keybind")
 scorpion:toggle()
 end, function()
 print("Changed Keybind")
+end)
+
+setting:addButton("Destroy GUI",function()
+    game.CoreGui["Scorpion Hub | SlayerViper#3097"]:Destroy() 
 end)
 
 for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
