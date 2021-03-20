@@ -33,7 +33,7 @@ end
 
 --UI Lib Loading
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/main/slg-library"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
 local venyx = library.new("Scorpion Hub | SlayerViper#3097", 5013109572)
 
 -- themes
@@ -406,7 +406,7 @@ local d = page3:addSection("Quests Maker")
 	
 --Four page
 if game.PlaceId == menuplace then
-local inf = venyx:addPage("Inf Spin (KG)", 5012544693)
+local inf = venyx:addPage("KG Spin", 5012544693)
 local spin = inf:addSection("Infinity Spin")
 
 	--main menu
@@ -502,7 +502,7 @@ end
 
 --Four Special Page
 if game.PlaceId == menuplace then
-local inf = venyx:addPage("Inf Spin (Element)", 5012544693)
+local inf = venyx:addPage("Element Spin", 5012544693)
 local spin = inf:addSection("Infinity Spin")
 
 	--main menu
@@ -594,6 +594,15 @@ local spin = inf:addSection("Infinity Spin")
         player.statz.spins:Destroy()
         game:GetService('TeleportService'):Teleport(game.PlaceId, player)	 
     end)
+	
+	local currentelement = spin:addSection("Current Element")
+	
+	currentelement:addText("", function()
+	    while wait() do
+            currentelement:changeText(evalue)
+		end
+    end)
+	
 end
 
 
