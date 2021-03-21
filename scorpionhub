@@ -67,6 +67,112 @@ section2:addButton("Close", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/slg-storage/main/infmode-close", true))()
 end)
 
+--Player page
+
+local PlayerP = scorpion:addPage("Player", 5012544693)
+local Humanoid = PlayerP:addSection("Humanoid")
+
+local walkspeedb
+local s1
+local sdefault = 50
+
+local jp1
+local jpdefault = 30
+
+Humanoid:addToggle("Walkspeed", nil, function(bool)
+	walkspeedb = bool
+	
+	if walkspeedb == true then
+			_G.walkspeedb = bool;
+			_G.walkspeedd = s1;
+
+			local mt = getrawmetatable(game)
+			local old = mt.__newindex
+			setreadonly(mt, false)
+
+			mt.__newindex = newcclosure(function(t,k,v)
+   			pcall(function()
+        		if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" and _G.walkspeedb then
+          		  v = _G.walkspeedd;
+       		 end
+   		 	end)
+    		return old(t,k,v)
+		end)
+		
+		else
+			_G.walkspeedb = false;
+			_G.walkspeedd = sdefault;
+
+			local mt = getrawmetatable(game)
+			local old = mt.__newindex
+			setreadonly(mt, false)
+
+			mt.__newindex = newcclosure(function(t,k,v)
+   			pcall(function()
+        		if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" and _G.walkspeedb then
+          		  v = _G.walkspeedd;
+       		 end
+   		 	end)
+    		return old(t,k,v)
+		end)
+				
+	end
+
+end)
+	
+local jumppowerb
+Humanoid:addToggle("Jumppower", nil, function(bool)
+	jumppowerb = bool
+	
+	if jumppowerb == true then
+			_G.jumppowerb = bool;
+			_G.jumppowerr = jp1;
+
+			local mt = getrawmetatable(game)
+			local old = mt.__newindex
+			setreadonly(mt, false)
+
+			mt.__newindex = newcclosure(function(t,k,v)
+   			pcall(function()
+        		if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "JumpPower" and _G.jumppowerb then
+          		  v = _G.jumppowerr;
+       		 end
+   		 	end)
+    		return old(t,k,v)
+		end)
+		
+		else
+			_G.jumppowerb = false;
+			_G.jumppowerr = jpdefault;
+
+			local mt = getrawmetatable(game)
+			local old = mt.__newindex
+			setreadonly(mt, false)
+
+			mt.__newindex = newcclosure(function(t,k,v)
+   			pcall(function()
+        		if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "JumpPower" and _G.jumppowerb then
+          		  v = _G.jumppowerr;
+       		 end
+   		 	end)
+    		return old(t,k,v)
+		end)
+				
+	end
+	
+end)
+	
+	Humanoid:addTextbox("Walkspeed",50,function(speed)
+		print("Selected: " .. speed)
+		s1 = speed
+	end)
+
+	Humanoid:addTextbox("Jumppower",30,function(jumppower)
+		print("Selected: " .. jumppower)
+	    jp1 = jumppower
+	end)
+
+
 
 --Two page
 local page2 = scorpion:addPage("Autofarm", 5012544693)
@@ -427,6 +533,7 @@ local spin = inf:addSection("Infinity Spin")
 		print(kgslot)
 		print(kgvalue)
 	end)
+	
 	local a1
 	spin:addDropdown("KG Select",kgs,function(KG1)
 		print("Selected: " .. KG1)
@@ -502,7 +609,7 @@ local spin = inf:addSection("Infinity Spin")
 	local currentelement = inf:addSection("currentkg coming soon")
 end
 
---Four Special Page
+--Five Page
 if game.PlaceId == menuplace then
 local inf = scorpion:addPage("Element Spin", 5012544693)
 local spin = inf:addSection("Infinity Spin")
@@ -630,7 +737,7 @@ local spin = inf:addSection("Infinity Spin")
 end
 
 
---Five page
+--Six page
 local page5 = scorpion:addPage("Discord", 5012544693)
 local Discord = page5:addSection("SlayerShop")
 
@@ -638,7 +745,7 @@ Discord:addButton("Copy Discord Link", function()
     setclipboard("https://discord.gg/q8ppJ8D")
 end)
     
--- Theme page
+-- Settings page
 local settings = scorpion:addPage("Settings", 5012544693)
 local colors = settings:addSection("Colors")
 local setting = settings:addSection("Settings")
