@@ -761,6 +761,10 @@ setting:addButton("Destroy GUI",function()
     game.CoreGui["Scorpion Hub | SlayerViper#3097"]:Destroy() 
 end)
 
+setting:addButton("Rejoin Server",function()
+    game:GetService('TeleportService'):Teleport(game.PlaceId, player)
+end)
+
 for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
 colors:addColorPicker(theme, color, function(color3)
 scorpion:setTheme(theme, color3)
