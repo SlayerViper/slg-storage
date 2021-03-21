@@ -1,0 +1,15 @@
+_G.walkspeedb2 = false;
+_G.walkspeedd2 = 50;
+
+local mt = getrawmetatable(game)
+local old = mt.__newindex
+setreadonly(mt, false)
+
+mt.__newindex = newcclosure(function(t,k,v)
+    pcall(function()
+        if t == game:GetService("Players").LocalPlayer.Character.Humanoid and k == "WalkSpeed" and _G.walkspeedb2 then
+            v = _G.walkspeedd2;
+        end
+    end)
+    return old(t,k,v)
+end)
