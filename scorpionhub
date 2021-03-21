@@ -14,6 +14,7 @@ end)
 local player = game.Players.LocalPlayer
 local mission = player.PlayerGui:WaitForChild("Main"):WaitForChild("ingame"):WaitForChild("Missionstory")
 local menuplace = 4616652839
+local ember = 4601350214
 local forestplace = 5447073001
 local rainplace = 5084678830
 local trainingplace = 5431071837
