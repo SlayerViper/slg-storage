@@ -1,5 +1,5 @@
-_G.walkspeedb = nil;
-_G.walkspeedd = nil;
+_G.walkspeedb = bool;
+_G.walkspeedd = s1;
 
 local mt = getrawmetatable(game)
 local old = mt.__newindex
