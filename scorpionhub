@@ -49,22 +49,13 @@ TextColor = Color3.fromRGB(255, 255, 255)
 
 -- first page
 local page = scorpion:addPage("Main", 5012544693)
-local section1 = page:addSection("Auto Doge")
-local section2 = page:addSection("Inf Mode")
+local section1 = page:addSection("Inf Mode")
 
 section1:addButton("Open", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/slg-storage/main/autodoge-open", true))()
-end)
-
-section1:addButton("Close", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/slg-storage/main/autodoge-close", true))()
-end)
-
-section2:addButton("Open", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/slg-storage/main/infmode-open", true))()
 end)
 
-section2:addButton("Close", function()
+section1:addButton("Close", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/slg-storage/main/infmode-close", true))()
 end)
 
