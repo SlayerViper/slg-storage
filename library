@@ -1811,13 +1811,15 @@ do
 			utility:Tween(circle, {ImageTransparency = 1}, 0.2)
 		end)
 
+		--[[
 		textbox.FocusLost:Connect(function()
 			if not tonumber(textbox.Text) then
 				value = self:updateSlider(slider, nil, default or min, min, max)
 				callback(value)
 			end
 		end)
-
+		--]]
+		
 		textbox:GetPropertyChangedSignal("Text"):Connect(function()
 			local text = textbox.Text
 
