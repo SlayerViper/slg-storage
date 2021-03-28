@@ -753,7 +753,7 @@ do
 		table.insert(self.modules, textlabel)
 		--self:Resize()
 
-		local text = textlabel.Title
+		local text = textlabel[textname]
 		
 		return textlabel
 	end
