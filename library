@@ -724,6 +724,41 @@ do
 		return button
 	end
 
+	function section:addText(textname, title, callback)
+		local text = utility:Create("ImageLabel", {
+			Name = "ImageLabel",
+			Parent = self.container,
+			BackgroundTransparency = 1,
+			BorderSizePixel = 0,
+			Size = UDim2.new(1, 0, 0, 30),
+			ZIndex = 2,
+			Image = "rbxassetid://5028857472",
+			ImageColor3 = themes.DarkContrast,
+			ScaleType = Enum.ScaleType.Slice,
+			SliceCenter = Rect.new(2, 2, 298, 298)
+		}, {
+			utility:Create("TextLabel", {
+				Name = "Title",
+				BackgroundTransparency = 1,
+				Size = UDim2.new(1, 0, 1, 0),
+				ZIndex = 3,
+				Font = Enum.Font.Gotham,
+				Text = title,
+				TextColor3 = themes.TextColor,
+				TextSize = 12,
+				TextTransparency = 0.10000000149012
+			})
+		})
+
+		table.insert(self.modules, text)
+		--self:Resize()
+
+		local text = text.Title
+
+		return text
+	end
+
+
 	function section:addToggle(title, default, callback)
 		local toggle = utility:Create("ImageButton", {
 			Name = "Toggle",
@@ -2118,6 +2153,12 @@ do
 		button = self:getModule(button)
 
 		button.Title.Text = title
+	end
+	
+	function section:updateText(textname, text, title)
+		textname = self:getModule(textname)
+
+		textname.Title.Text = title
 	end
 
 	function section:updateToggle(toggle, title, value)
