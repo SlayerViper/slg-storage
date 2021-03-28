@@ -750,87 +750,18 @@ do
 			})
 		})
 		
-		print("Loaded 1")
 		table.insert(self.modules, textlabel)
 		--self:Resize()
 
 		local text = textlabel.Title
 		
-		print("Loaded 2")
-		
 		return textlabel
 	end
 
-	function section:addTextT(title, callback)
-		local textlabelt = utility:Create("ImageButton", {
-			Name = "Button",
-			Parent = self.container,
-			BackgroundTransparency = 1,
-			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 30),
-			ZIndex = 2,
-			Image = "rbxassetid://5028857472",
-			ImageColor3 = themes.DarkContrast,
-			ScaleType = Enum.ScaleType.Slice,
-			SliceCenter = Rect.new(2, 2, 298, 298)
-		}, {
-			utility:Create("TextLabel", {
-				Name = "Title",
-				BackgroundTransparency = 1,
-				Size = UDim2.new(1, 0, 1, 0),
-				ZIndex = 3,
-				Font = Enum.Font.Gotham,
-				Text = title,
-				TextColor3 = themes.TextColor,
-				TextSize = 12,
-				TextTransparency = 0.10000000149012
-			})
-		})
-		
-		print("Loaded 1T")
-		table.insert(self.modules, textlabelt)
-		--self:Resize()
+	function section:updateText(textlabel, title)
+		textlabel = self:getModule(textlabel)
 
-		local text = textlabelt.Title
-		
-		print("Loaded 2T")
-		
-		return textlabelt
-	end
-
-	function section:addTextS(textname, title, callback)
-		local textS = utility:Create("ImageLabel", {
-			Name = "ImageLabel",
-			Parent = self.container,
-			BackgroundTransparency = 1,
-			Size = UDim2.new(1, -10, 0, 28),
-			ZIndex = 2,
-			Image = "rbxassetid://5028857472",
-			ImageColor3 = themes.LightContrast,
-			ScaleType = Enum.ScaleType.Slice,
-			SliceCenter = Rect.new(4, 4, 296, 296),
-			ClipsDescendants = true
-		}, {
-			utility:Create("TextLabel", {
-				Name = "Title",
-				BackgroundTransparency = 1,
-				Size = UDim2.new(1, 0, 0, 20),
-				ZIndex = 2,
-				Font = Enum.Font.GothamSemibold,
-				Text = title,
-				TextColor3 = themes.TextColor,
-				TextSize = 12,
-				TextXAlignment = Enum.TextXAlignment.Left,
-				TextTransparency = 1
-			})
-		})
-		
-		table.insert(self.modules, textS)
-		--self:Resize()
-
-		local text = textS.Title
-
-		return textS
+		textlabel.Title.Text = title
 	end
 
 	function section:addToggle(title, default, callback)
@@ -2227,12 +2158,6 @@ do
 		button = self:getModule(button)
 
 		button.Title.Text = title
-	end
-	
-	function section:updateText(textname, title)
-		textname = self:getModule(textname)
-
-		textname.Title.Text = title
 	end
 
 	function section:updateToggle(toggle, title, value)
