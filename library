@@ -738,7 +738,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = textname,
+				Name = "Title",
 				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 1, 0),
 				ZIndex = 3,
@@ -753,7 +753,7 @@ do
 		table.insert(self.modules, textlabel)
 		--self:Resize()
 
-		local text = textlabel[textname]
+		local text = textlabel.Title
 		
 		return textlabel
 	end
