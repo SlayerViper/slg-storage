@@ -1,4 +1,10 @@
-# storage
+# Script Storage
+
+## Features
+- Coming Soon..
 
 
-Script Storage
+## Documentation
+```
+print("Storage Activated!")
+```
