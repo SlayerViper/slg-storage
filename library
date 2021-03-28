@@ -725,7 +725,7 @@ do
 	end
 
 	function section:addText(textname, title, callback)
-		local text = utility:Create("ImageLabel", {
+		local textL = utility:Create("ImageLabel", {
 			Name = textname,
 			Parent = self.container,
 			BackgroundTransparency = 1,
@@ -763,9 +763,9 @@ do
 		table.insert(self.modules, text)
 		--self:Resize()
 
-		local text = text.Container.Title
+		local text = textL.Container.Title
 
-		return text
+		return textL
 	end
 
 	function section:addToggle(title, default, callback)
