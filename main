@@ -49,7 +49,7 @@ TextColor = Color3.fromRGB(255, 255, 255)
 }
 
 --First page
-local page = scorpion:addPage("Main", 5012540643)
+local page = scorpion:addPage("Main", 5012544693)
 
 --Player page
 
@@ -169,7 +169,7 @@ end)
 	end)
 
 --Two page
-local page2 = scorpion:addPage("Autofarm", 5012541203)
+local page2 = scorpion:addPage("Autofarm", 5012544693)
 local Farm = page2:addSection("Mission Farm")
 local Scroll = page2:addSection("Scroll Farm")
 local autofarmspd
@@ -209,7 +209,7 @@ getgenv().speed = 500
 
 --Warmode Page
 if game.PlaceId == warplace then
-local warmodepage = scorpion:addPage("War Farm", 5012541203)
+local warmodepage = scorpion:addPage("War Farm", 5012544693)
 local warfarm = warmodepage:addSection("Warmode")
 
 local war
@@ -224,7 +224,7 @@ local war
 end
 
 --Three page
-local page3 = scorpion:addPage("Quests Maker", 5012541203)
+local page3 = scorpion:addPage("Quests Maker", 5012544693)
 local d = page3:addSection("Quests Maker")
 
     local RushL
@@ -535,7 +535,7 @@ local d = page3:addSection("Quests Maker")
 	
 --Four page
 if game.PlaceId == menuplace then
-local inf = scorpion:addPage("KG Spin", 5012544961)
+local inf = scorpion:addPage("KG Spin", 5012544693)
 local spin = inf:addSection("Infinity Spin")
 
 	--main menu
@@ -634,7 +634,7 @@ end
 
 --Five Page
 if game.PlaceId == menuplace then
-local inf = scorpion:addPage("Element Spin", 5012544961)
+local inf = scorpion:addPage("Element Spin", 5012544693)
 local spin = inf:addSection("Infinity Spin")
 
 	--main menu
@@ -770,7 +770,7 @@ Discord:addButton("Copy Discord Link", function()
 end)
     
 -- Settings page
-local settings = scorpion:addPage("Settings", 5012543257)
+local settings = scorpion:addPage("Settings", 5012544693)
 local colors = settings:addSection("Colors")
 local setting = settings:addSection("Settings")
 local ServerS = settings:addSection("Server")
