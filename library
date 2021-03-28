@@ -726,7 +726,7 @@ do
 
 	function section:addText(textname, title, callback)
 		local textlabel = utility:Create("ImageButton", {
-			Name = textname,
+			Name = "Button",
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -738,7 +738,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = textname,
 				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 1, 0),
 				ZIndex = 3,
@@ -759,6 +759,12 @@ do
 	end
 
 	function section:updateText(textlabel, title)
+		textlabel = self:getTextModule(textlabel)
+
+		textlabel.Title.Text = title
+	end
+	
+	function section:updateTextV2(textlabel, title)
 		textlabel = self:getModule(textlabel)
 
 		textlabel.Title.Text = title
@@ -2144,12 +2150,27 @@ do
 		end
 
 		for i, module in pairs(self.modules) do
-			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Text or module:FindFirstChild(info) == info then
+			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Text == info then
 				return module
 			end
 		end
 
 		error("No module found under "..tostring(info))
+	end
+	
+	function section:getTextModule(info)
+
+		if table.find(self.modules, info) then
+			return info
+		end
+
+		for i, module in pairs(self.modules) do
+			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Name or module:FindFirstChild(info)  == info then
+				return module
+			end
+		end
+
+		error("No Text module found under "..tostring(info))
 	end
 
 	-- updates
