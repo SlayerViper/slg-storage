@@ -726,7 +726,7 @@ do
 
 	function section:addText(textname, title, callback)
 		local textlabel = utility:Create("ImageButton", {
-			Name = "Button",
+			Name = textname,
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -2150,6 +2150,21 @@ do
 		end
 
 		error("No module found under "..tostring(info))
+	end
+
+	function section:getTextModule(info)
+
+		if table.find(self.modules, info) then
+			return info
+		end
+
+		for i, module in pairs(self.modules) do
+			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Name == info then
+				return module
+			end
+		end
+
+		error("No Text module found under "..tostring(info))
 	end
 
 	-- updates
