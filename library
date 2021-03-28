@@ -737,14 +737,6 @@ do
 			SliceCenter = Rect.new(4, 4, 296, 296),
 			ClipsDescendants = true
 		}, {
-			utility:Create("Frame", {
-				Name = "Container",
-				Active = true,
-				BackgroundTransparency = 1,
-				BorderSizePixel = 0,
-				Position = UDim2.new(0, 8, 0, 8),
-				Size = UDim2.new(1, -16, 1, -16)
-			}, {
 				utility:Create("TextLabel", {
 					Name = "Title",
 					BackgroundTransparency = 1,
@@ -758,12 +750,11 @@ do
 					TextTransparency = 1
 				})
 			})
-		})
 		
 		table.insert(self.modules, text)
 		--self:Resize()
 
-		local text = textL.Container.Title
+		local text = textL.Title
 
 		return textL
 	end
@@ -2164,7 +2155,7 @@ do
 		button.Title.Text = title
 	end
 	
-	function section:updateText(textname, text, title)
+	function section:updateText(textname, title)
 		textname = self:getModule(textname)
 
 		textname.Title.Text = title
