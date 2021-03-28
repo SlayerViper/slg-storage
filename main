@@ -20,6 +20,7 @@ local rainplace = 5084678830
 local trainingplace = 5431071837
 local akatsukiplace = 5431069982
 local worldxplace = 5943874201
+local warplace = 5824792748
 local villageplace = game:GetService("Workspace"):FindFirstChild("rank")
 local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 function toTarget(pos, targetPos, targetCFrame)
@@ -34,10 +35,10 @@ end
 
 --UI Lib Loading
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/library"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/library"))()
 local scorpion = library.new("Scorpion Hub | SlayerViper#3097", 5013109572)
 
--- themes
+--Themes
 local themes = {
 Background = Color3.fromRGB(24, 24, 24),
 Glow = Color3.fromRGB(0, 0, 0),
@@ -47,22 +48,14 @@ DarkContrast = Color3.fromRGB(14, 14, 14),
 TextColor = Color3.fromRGB(255, 255, 255)
 }
 
--- first page
-local page = scorpion:addPage("Main", 5012544693)
-local section1 = page:addSection("Inf Mode")
-
-section1:addButton("Open", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/infmode-open", true))()
-end)
-
-section1:addButton("Close", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/infmode-close", true))()
-end)
+--First page
+local page = scorpion:addPage("Main", 5012540643)
 
 --Player page
 
 local PlayerP = scorpion:addPage("Player", 5012544693)
 local Humanoid = PlayerP:addSection("Humanoid")
+local InfModeS = PlayerP:addSection("Inf Mode")
 
 local walkspeedb
 local s1
@@ -164,12 +157,22 @@ end)
 	    jp1 = jumppower
 	end)
 
-
+	local infmodeb
+	InfModeS:addToggle("Inf Mode", nil, function(bool)
+		infmodeb = bool
+		
+		if infmodeb == true then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/infmode-open", true))()
+		else
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/infmode-close", true))()
+		end
+	end)
 
 --Two page
-local page2 = scorpion:addPage("Autofarm", 5012544693)
+local page2 = scorpion:addPage("Autofarm", 5012541203)
 local Farm = page2:addSection("Mission Farm")
 local Scroll = page2:addSection("Scroll Farm")
+local autofarmspd
 getgenv().speed = 500
 
 
@@ -177,12 +180,13 @@ getgenv().speed = 500
 	Farm:addToggle("AutoFarm", nil, function(bool)
 		autofarm = bool
 	end)
-
-	local gift
-    Farm:addToggle("Farm Gift Box", nil, function(bool)
-		gift = bool
-    end)
-    
+	
+	
+    Farm:addSliderS("AutoFarm Speed", 500, 100, 1000, function(autofarmspeed)
+		autofarmspd = autofarmspeed
+		getgenv().speed = autofarmspd
+	end)
+	
   	local RANKUP
     Farm:addToggle("AutoRank", nil, function(bool)
 		RANKUP = bool
@@ -196,10 +200,16 @@ getgenv().speed = 500
     Scroll:addToggle("Scroll Farm", nil, function(bool)
 		scrollfarm = bool
     end)
+	
+	local gift
+    Scroll:addToggle("Farm Gift Box", nil, function(bool)
+		gift = bool
+    end)
     
 
 --Warmode Page
-local warmodepage = scorpion:addPage("War Farm", 5012544693)
+if game.PlaceId == warplace then
+local warmodepage = scorpion:addPage("War Farm", 5012541203)
 local warfarm = warmodepage:addSection("Warmode")
 
 local war
@@ -211,41 +221,62 @@ local war
     warfarm:addToggle("Reset round 21", nil, function(bool)
         reset = bool
     end)
+end
 
 --Three page
-local page3 = scorpion:addPage("Quests Maker", 5012544693)
+local page3 = scorpion:addPage("Quests Maker", 5012541203)
 local d = page3:addSection("Quests Maker")
 
-    d:addButton("Rush",function()
+    local RushL
+	d:addToggle("Rush", nil, function(bool)
+		RushL = bool
+		
 		for i = 1,300 do
-			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
-			wait(.25)
+			if RushL == true then
+				game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
+				wait(.25)
+			end
 		end
-    end)
+	end)
 
-    d:addButton("Jumps",function()
+	local JumpsL
+	d:addToggle("Jumps", nil, function(bool)
+		JumpsL = bool
+		
 		for v = 1,300 do
-			game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
-			wait(.25)
+			if JumpsL == true then
+				game.Players.LocalPlayer.Character.combat.update:FireServer("takemovement2")
+				wait(.25)
+			end
 		end
-    end)
-
-    d:addButton("Chakra Charges",function()
+	end)
+	
+	local ChakraL
+	d:addToggle("Chakra Charges", nil, function(bool)
+		ChakraL = bool
+		
 		for i = 1,500 do
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
-			wait(.1)
-			game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
-			wait(.5)
+			if ChakraL == true then
+				game.Players.LocalPlayer.Character.combat.update:FireServer("key","c")
+				wait(.1)
+				game.Players.LocalPlayer.Character.combat.update:FireServer("key","cend")
+				wait(.5)
+			end
 		end
-    end)
+	end)
 
-    d:addButton("Punches",function()
+	local PunchL
+	d:addToggle("Punches", nil, function(bool)
+		PunchL = bool
+		
 		for i = 1,999 do
-			game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
-			wait(.3)
+			if PunchL == true then
+				game.Players.LocalPlayer.Character.combat.update:FireServer("mouse1",true)
+				wait(.3)
+			end
 		end
-    end)
-
+	end)
+	
     d:addButton("TP TrainLog",function()
         local player = game.Players.LocalPlayer
 		toTarget(player.Character.HumanoidRootPart.Position,workspace.npc.logtraining:FindFirstChild("HumanoidRootPart").Position,CFrame.new(game:GetService("Workspace").npc.logtraining:FindFirstChild("HumanoidRootPart").Position))
@@ -504,7 +535,7 @@ local d = page3:addSection("Quests Maker")
 	
 --Four page
 if game.PlaceId == menuplace then
-local inf = scorpion:addPage("KG Spin", 5012544693)
+local inf = scorpion:addPage("KG Spin", 5012544961)
 local spin = inf:addSection("Infinity Spin")
 
 	--main menu
@@ -603,7 +634,7 @@ end
 
 --Five Page
 if game.PlaceId == menuplace then
-local inf = scorpion:addPage("Element Spin", 5012544693)
+local inf = scorpion:addPage("Element Spin", 5012544961)
 local spin = inf:addSection("Infinity Spin")
 
 	--main menu
@@ -735,12 +766,15 @@ local Discord = page5:addSection("SlayerShop")
 
 Discord:addButton("Copy Discord Link", function()
     setclipboard("https://discord.gg/q8ppJ8D")
+	scorpion:Notify("Scorpion Hub", "Link Copied!")
 end)
     
 -- Settings page
-local settings = scorpion:addPage("Settings", 5012544693)
+local settings = scorpion:addPage("Settings", 5012543257)
 local colors = settings:addSection("Colors")
 local setting = settings:addSection("Settings")
+local ServerS = settings:addSection("Server")
+local privateserver = player.PlayerGui.Main.private.Text
 	
 setting:addKeybind("Show/Hide Settings", Enum.KeyCode.Backquote, function()
 print("Activated Keybind")
@@ -753,9 +787,22 @@ setting:addButton("Destroy GUI",function()
     game.CoreGui["Scorpion Hub | SlayerViper#3097"]:Destroy() 
 end)
 
-setting:addButton("Rejoin Server",function()
+ServerS:addButton("Rejoin Server",function()
     game:GetService('TeleportService'):Teleport(game.PlaceId, player)
 end)
+
+ServerS:addButton("Rejoin Private Server",function()
+    player.startevent:FireServer("teleporttoprivate", privateserver)
+end)
+
+--[[
+setting:addTextbox("Notification", "Default", function(value, focusLost)
+
+	if focusLost then
+		scorpion:Notify("Title", value)
+	end
+end)
+--]]
 
 for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
 colors:addColorPicker(theme, color, function(color3)
