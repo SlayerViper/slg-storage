@@ -761,7 +761,7 @@ do
 	function section:updateText(textlabel, title)
 		textlabel = self:getTextModule(textlabel)
 
-		textlabel.Title.Text = title
+		textlabel.Text = title
 	end
 	
 	function section:updateTextV2(textlabel, title)
@@ -2165,7 +2165,7 @@ do
 		end
 
 		for i, module in pairs(self.modules) do
-			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Name or module:FindFirstChild(info)  == info then
+			if (module:FindFirstChild(info)).Name == info then
 				return module
 			end
 		end
