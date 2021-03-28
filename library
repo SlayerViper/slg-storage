@@ -582,7 +582,7 @@ do
 		})
 
 		-- dragging
-		utility:DraggingEnabled(notification)
+		--utility:DraggingEnabled(notification)
 
 		-- position and size
 		title = title or "Notification"
@@ -658,6 +658,10 @@ do
 
 			close()
 		end)
+		
+		while wait(10) do
+			close()
+		end
 	end
 
 	function section:addButton(title, callback)
