@@ -725,31 +725,31 @@ do
 	end
 
 	function section:addText(textname, title, callback)
-		local textL = utility:Create("ImageLabel", {
-			Name = textname,
+		local textL = utility:Create("ImageButton", {
+			Name = "Button",
 			Parent = self.container,
 			BackgroundTransparency = 1,
-			Size = UDim2.new(1, -10, 0, 28),
+			BorderSizePixel = 0,
+			Size = UDim2.new(1, 0, 0, 30),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
-			ImageColor3 = themes.LightContrast,
+			ImageColor3 = themes.DarkContrast,
 			ScaleType = Enum.ScaleType.Slice,
-			SliceCenter = Rect.new(4, 4, 296, 296),
-			ClipsDescendants = true
+			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
-				utility:Create("TextLabel", {
-					Name = "Title",
-					BackgroundTransparency = 1,
-					Size = UDim2.new(1, 0, 0, 20),
-					ZIndex = 2,
-					Font = Enum.Font.GothamSemibold,
-					Text = title,
-					TextColor3 = themes.TextColor,
-					TextSize = 12,
-					TextXAlignment = Enum.TextXAlignment.Left,
-					TextTransparency = 1
-				})
+			utility:Create("TextLabel", {
+				Name = "Title",
+				BackgroundTransparency = 1,
+				Size = UDim2.new(1, 0, 0, 20),
+				ZIndex = 2,
+				Font = Enum.Font.GothamSemibold,
+				Text = title,
+				TextColor3 = themes.TextColor,
+				TextSize = 12,
+				TextXAlignment = Enum.TextXAlignment.Left,
+				TextTransparency = 1
 			})
+		})
 		
 		table.insert(self.modules, textL)
 		--self:Resize()
