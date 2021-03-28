@@ -2144,27 +2144,12 @@ do
 		end
 
 		for i, module in pairs(self.modules) do
-			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Text == info then
+			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Text or module:FindFirstChild(info) == info then
 				return module
 			end
 		end
 
 		error("No module found under "..tostring(info))
-	end
-
-	function section:getTextModule(info)
-
-		if table.find(self.modules, info) then
-			return info
-		end
-
-		for i, module in pairs(self.modules) do
-			if (module:FindFirstChild("Title") or module:FindFirstChild("TextBox", true)).Name == info then
-				return module
-			end
-		end
-
-		error("No Text module found under "..tostring(info))
 	end
 
 	-- updates
