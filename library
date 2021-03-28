@@ -2165,7 +2165,7 @@ do
 		end
 
 		for i, module in pairs(self.modules) do
-			if (module:FindFirstChild(info)).Name == info then
+			if module:FindFirstChild(info).Name == info then
 				return module
 			end
 		end
