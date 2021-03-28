@@ -751,7 +751,7 @@ do
 				})
 			})
 		
-		table.insert(self.modules, text)
+		table.insert(self.modules, textL)
 		--self:Resize()
 
 		local text = textL.Title
