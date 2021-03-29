@@ -758,10 +758,10 @@ do
 		return textlabel
 	end
 
-	function section:updateTextV2(realname, textlabel, title, selectedvalue)
-		textlabel = self:getTextModule(textlabel,realname)
+	function section:updateTextV2(info, realname, title, selectedvalue)
+		info = self:getTextModule(info,realname)
 	
-		textlabel[realname].Text = title,selectedvalue
+		info[realname].Text = title,selectedvalue
 	end
 	
 	function section:updateText(textlabel, title, selectedvalue)
@@ -2165,12 +2165,12 @@ do
 		end
 
 		for i, module in pairs(self.modules) do
-			if module:FindFirstChild(info)[realname] == realname then
+			if module:FindFirstChild(info)[realname].Name == realname then
 				return module
 			end
 		end
 
-		error("No Text module found under "..tostring(info))
+		error("No Text module found under "..tostring(info,realname))
 	end
 
 	-- updates
