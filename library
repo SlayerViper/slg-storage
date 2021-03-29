@@ -2165,6 +2165,7 @@ do
 		end
 
 		for i, module in pairs(self.modules) do
+		print(info,realname,":",module:FindFirstChild(info)[realname])
 			if module:FindFirstChild(info)[realname].Name == realname then
 				return module
 			end
