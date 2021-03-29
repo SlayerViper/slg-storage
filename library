@@ -760,9 +760,8 @@ do
 
 	function section:updateTextV2(realname, textlabel, title, selectedvalue)
 		textlabel = self:getTextModule(textlabel)
-		
-		textlabel.Name = realname
-		textlabel.Text = title,selectedvalue
+	
+		textlabel[realname].Text = title,selectedvalue
 	end
 	
 	function section:updateText(textlabel, title, selectedvalue)
