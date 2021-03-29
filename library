@@ -724,7 +724,7 @@ do
 		return button
 	end
 
-	function section:addText(textname, title, callback)
+	function section:addText(title, selectedvalue,callback)
 		local textlabel = utility:Create("ImageButton", {
 			Name = "Button",
 			Parent = self.container,
