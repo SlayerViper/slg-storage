@@ -727,9 +727,20 @@ local spin = inf:addSection("Infinity Spin")
         game:GetService('TeleportService'):Teleport(game.PlaceId, player)	 
     end)
 	
-	local currentelement = inf:addSection("currentelement coming soon")
-	
 	--[[
+	spin:addButton("baban",function()
+		spin:updateButton("baban", "annen")
+		
+		spin:updateTextV2("Button","CurrentElement","Current Element: ",evalue)
+		
+		wait(3)
+		spin:updateButton("annen", "baban")
+		
+		spin:updateTextV2("Button","CurrentElement","Current Element: ",evalue)
+	end)
+	
+	spin:addText("CurrentElement","Current Element: ",evalue)
+	
 	spawn(function()
 		while wait() do
 		
