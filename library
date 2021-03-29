@@ -724,7 +724,7 @@ do
 		return button
 	end
 
-	function section:addText(title, selectedvalue,callback)
+	function section:addText(realname, title, selectedvalue,callback)
 		local textlabel = utility:Create("ImageButton", {
 			Name = "Button",
 			Parent = self.container,
@@ -738,7 +738,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = realname,
 				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 1, 0),
 				ZIndex = 3,
@@ -753,15 +753,16 @@ do
 		table.insert(self.modules, textlabel)
 		--self:Resize()
 
-		local text = textlabel.Title
+		local text = textlabel[realname]
 		
 		return textlabel
 	end
 
-	function section:updateTextV2(textlabel, title, selectedvalue)
+	function section:updateTextV2(realname, textlabel, title, selectedvalue)
 		textlabel = self:getTextModule(textlabel)
-
-		textlabel.Text = title
+		
+		textlabel.Name = realname
+		textlabel.Text = title,selectedvalue
 	end
 	
 	function section:updateText(textlabel, title, selectedvalue)
