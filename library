@@ -758,13 +758,13 @@ do
 		return textlabel
 	end
 
-	function section:updateTextV2(textlabel, title)
+	function section:updateTextV2(textlabel, title, selectedvalue)
 		textlabel = self:getTextModule(textlabel)
 
 		textlabel.Text = title
 	end
 	
-	function section:updateText(textlabel, title)
+	function section:updateText(textlabel, title, selectedvalue)
 		textlabel = self:getModule(textlabel)
 
 		textlabel.Title.Text = title
