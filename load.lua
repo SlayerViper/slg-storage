@@ -9,15 +9,19 @@ local enable = false
 for i, v in pairs(whitelist) do
    if i == "UserId" then
       if player.UserId == v then
-         enable = true
+         print("test")
+         --enable = true
       end
    elseif i == "GroupId" then
       if player:IsInGroup(v) then
-        enable = true
+         print("test")
+        --enable = true
       end
    end
 end
 
+--[[
 if enable then
    LocalPlayer.PlayerGui:FindFirstChild("RadioComms").Enabled = true
 end
+--]]
