@@ -43,6 +43,13 @@ TextColor = Color3.fromRGB(255, 255, 255)
 
 --First Page
 local page = scorpion:addPage("Main", 5012544693)
+local autofarmspd
+getgenv().speed = 500
+
+page:addSliderS("Teleport Speed", 500, 100, 1000, function(autofarmspeed)
+		autofarmspd = autofarmspeed
+		getgenv().speed = autofarmspd
+	end)
 
 --Two Page
 local page2 = scorpion:addPage("Autofarm", 5012544693)
