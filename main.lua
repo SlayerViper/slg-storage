@@ -51,7 +51,7 @@ local EFarm = page2:addSection("Event Farm")
 
 local function callback(Text)
 	if Text == "Yes" then
-		player.Character:WaitForChild("HumanoidRootPart").Position = partname.Position
+		toTarget(player.Character.HumanoidRootPart.Position,partname.Part.Position,CFrame.new(game:GetService("Workspace")[partname].Part.Position))
 	elseif Text == "No" then
 		print("false")
 	end
@@ -114,7 +114,7 @@ print("Changed Keybind")
 end)
 
 setting:addButton("Destroy GUI",function()
-    game.CoreGui["Scorpion Hub | SlayerViper#3097"]:Destroy() 
+    game.CoreGui["Scorpion Hub | SlayerViper#3097 /UD"]:Destroy() 
 end)
 
 ServerS:addButton("Rejoin Server",function()
