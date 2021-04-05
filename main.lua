@@ -24,7 +24,6 @@ end
 
 local NotificationBindable = Instance.new("BindableFunction")
 NotificationBindable.OnInvoke = callback
-local partname
 
 --UI Lib Loading
 
@@ -48,6 +47,7 @@ local page = scorpion:addPage("Main", 5012544693)
 local page2 = scorpion:addPage("Autofarm", 5012544693)
 local Farm = page2:addSection("Auto Farm")
 local EFarm = page2:addSection("Event Farm")
+local partname
 local autofarmspd
 getgenv().speed = 500
 
@@ -89,20 +89,20 @@ getgenv().speed = 500
 	EFarm:addToggle("Event Farm", nil, function(bool)
 		eventfarm = bool
       
-	if eventfarm == true then
 	game.Workspace.ChildAdded:Connect(function(added)
-		for _,g in pairs(game.Workspace:GetDescendants()) do
- 			if g:IsA("Model") then
-				print(added,"Added.")
-				wait(0.5)
-				print(added.PrimaryPart,"Real Part Added.")
-				partname = added
-				SendNotify()
+		if eventfarm == true then		
+			for _,g in pairs(game.Workspace:GetDescendants()) do
+ 				if g:IsA("Model") then
+					print(added,"Added.")
+					wait(0.5)
+					print(added.PrimaryPart,"Real Part Added.")
+					partname = added
+					SendNotify()
+				end
 			end
-		end
 	end)
          
-	end
+		end
 	end)
 
 EFarm:addButton("if not send notify (teleport egg)", function()
