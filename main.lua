@@ -22,9 +22,6 @@ function toTarget(pos, targetPos, targetCFrame)
     if not tween then return err end
 end
 
-local NotificationBindable = Instance.new("BindableFunction")
-NotificationBindable.OnInvoke = callback
-
 --UI Lib Loading
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/main/library.lua"))()
@@ -51,32 +48,8 @@ local partname
 local autofarmspd
 getgenv().speed = 500
 
-	local function callback(Text)
-		if Text == "Yes" then
-			for _,g in pairs(game.Workspace:GetDescendants()) do
- 				if partname.ClassName == "Model" then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.Position = partname.PrimaryPart
-				end
-			end
-		elseif Text == "No" then
-			print("false")
-		end
-	end
-
-	function SendNotify()
-	game.StarterGui:SetCore("SendNotification", {
-	     	Title = "Part Added! Random Name = Egg";
-	     	Text = "Part Name:", partname;
-	     	Icon = "";
-	     	Duration = 5;
-	     	Button1 = "Yes";
-	     	Button2 = "No";
-	     	Callback = NotificationBindable;
-	})
-	end
-
 	local autofarm
-	Farm:addToggle("Auto Farm", nil, function(bool)
+	Farm:addToggle("Auto Farm (Coming Soon)", nil, function(bool)
 		autofarm = bool
 	end)
 
@@ -88,31 +61,9 @@ getgenv().speed = 500
 	local eventfarm
 	EFarm:addToggle("Event Farm", nil, function(bool)
 		eventfarm = bool
-      
-	game.Workspace.ChildAdded:Connect(function(added)
-		if eventfarm == true then		
-			for _,g in pairs(game.Workspace:GetDescendants()) do
- 				if added.ClassName == "Model" then
-					print(added,"Added.")
-					wait(1)
-					print(added.PrimaryPart,"Real Part Added.")
-					partname = added
-					SendNotify()
-				end
-			end
-		end
-         
+		getgenv().AutoFarm = bool
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Ihaveash0rtnamefordiscord/Releases/main/UltimateDrivingEggFarm",true))('Discord: SlayerViper#3097')
 	end)
-	end)
-
-EFarm:addButton("if not send notify (teleport egg)", function()
-	for _,g in pairs(game.Workspace:GetDescendants()) do
- 		if partname.ClassName == "Model" then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.Position = partname.PrimaryPart
-		end
-	end
-	scorpion:Notify("Scorpion Hub", "Teleported!")
-end)
 
 --Three page
 local page5 = scorpion:addPage("Discord", 5012544693)
