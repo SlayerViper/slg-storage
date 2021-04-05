@@ -1,7 +1,7 @@
 local restricted = true
 local loaded = true
 local player = game.Players.LocalPlayer
-local database = {'N3mes1s_Nyks'}
+local database = {'N3mes1s_Nyks','franklin19415'}
 local groupid = {123456,6884747}
 
 local shindo = {4616652839,4601350214,5447073001,5084678830,5431071837,5431069982,5943874201,5824792748}
