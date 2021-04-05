@@ -100,9 +100,9 @@ getgenv().speed = 500
 					SendNotify()
 				end
 			end
-	end)
-         
 		end
+         
+	end)
 	end)
 
 EFarm:addButton("if not send notify (teleport egg)", function()
