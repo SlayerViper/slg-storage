@@ -22,7 +22,7 @@ local akatsukiplace = 5431069982
 local worldxplace = 5943874201
 local warplace = 5824792748
 local villageplace = game:GetService("Workspace"):FindFirstChild("rank")
-local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
+--local warplace = game:GetService("Workspace"):FindFirstChild("warmode")
 function toTarget(pos, targetPos, targetCFrame)
     local tween_s = game:service"TweenService"
     local info = TweenInfo.new((targetPos - pos).Magnitude/getgenv().speed, Enum.EasingStyle.Linear)
