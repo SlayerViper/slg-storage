@@ -53,11 +53,11 @@ getgenv().speed = 500
 
 	local function callback(Text)
 		if Text == "Yes" then
-		for _,g in pairs(partname:GetDescendants()) do
- 			if g:IsA("Part") then
-			toTarget(player.Character.HumanoidRootPart.Position,g.PrimaryPart.Position,CFrame.new(game:GetService("Workspace")[g].PrimaryPart.Position))
+			for _,g in pairs(game.Workspace:GetDescendants()) do
+ 				if g:IsA("Model") then
+					toTarget(player.Character.HumanoidRootPart.Position,g.PrimaryPart.Position,CFrame.new(game:GetService("Workspace")[g].PrimaryPart.Position))
+				end
 			end
-		end
 		elseif Text == "No" then
 			print("false")
 		end
