@@ -25,7 +25,7 @@ if loaded then
 		if game.PlaceId == shindoo then 
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/main.lua", true))()
 		elseif game.PlaceId == ud then
-			print("Coming Soon")
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhubforud/main.lua", true))()
 		end
 	end
 	
