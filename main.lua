@@ -86,6 +86,10 @@ end
       end
 	end)
 
+EFarm:addButton("if not send notify (teleport egg)", function()
+	player.Character:WaitForChild("HumanoidRootPart").Position = partname.Position
+	scorpion:Notify("Scorpion Hub", "Teleported!")
+end)
 
 --Three page
 local page5 = scorpion:addPage("Discord", 5012544693)
@@ -101,7 +105,6 @@ local settings = scorpion:addPage("Settings", 5012544693)
 local colors = settings:addSection("Colors")
 local setting = settings:addSection("Settings")
 local ServerS = settings:addSection("Server")
-local privateserver = player.PlayerGui.Main.private.Text
 	
 setting:addKeybind("Show/Hide Settings", Enum.KeyCode.Backquote, function()
 print("Activated Keybind")
