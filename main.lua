@@ -54,8 +54,8 @@ getgenv().speed = 500
 	local function callback(Text)
 		if Text == "Yes" then
 			for _,g in pairs(game.Workspace:GetDescendants()) do
- 				if g:IsA("Model") then
-					toTarget(player.Character.HumanoidRootPart.Position,g.PrimaryPart.Position,CFrame.new(game:GetService("Workspace")[g].PrimaryPart.Position))
+ 				if partname.ClassName == "Model" then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.Position = partname.PrimaryPart
 				end
 			end
 		elseif Text == "No" then
@@ -92,9 +92,9 @@ getgenv().speed = 500
 	game.Workspace.ChildAdded:Connect(function(added)
 		if eventfarm == true then		
 			for _,g in pairs(game.Workspace:GetDescendants()) do
- 				if g:IsA("Model") then
+ 				if added.ClassName == "Model" then
 					print(added,"Added.")
-					wait(0.5)
+					wait(1)
 					print(added.PrimaryPart,"Real Part Added.")
 					partname = added
 					SendNotify()
@@ -107,8 +107,8 @@ getgenv().speed = 500
 
 EFarm:addButton("if not send notify (teleport egg)", function()
 	for _,g in pairs(game.Workspace:GetDescendants()) do
- 		if g:IsA("Model") then
-			toTarget(player.Character.HumanoidRootPart.Position,g.PrimaryPart.Position,CFrame.new(game:GetService("Workspace")[g].PrimaryPart.Position))
+ 		if partname.ClassName == "Model" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Position = partname.PrimaryPart
 		end
 	end
 	scorpion:Notify("Scorpion Hub", "Teleported!")
