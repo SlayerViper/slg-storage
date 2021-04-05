@@ -35,8 +35,8 @@ end
 
 --UI Lib Loading
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/library"))()
-local scorpion = library.new("Scorpion Hub | SlayerViper#3097", 5013109572)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/main/library.lua"))()
+local scorpion = library.new("Scorpion Hub | SlayerViper#3097 /SL", 5013109572)
 
 --Themes
 local themes = {
