@@ -26,22 +26,18 @@ function IsAllowed(player)
 	end
 end
 
-if loaded then
-    if (not IsAllowed(player)) then return end
+   if (not IsAllowed(player)) then return end
 	
-    	for i,shindoo in pairs(shindo) do
-		if game.PlaceId == shindoo then 
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/main.lua", true))()
-		else
-			for i,udd in pairs(ud) do
-				if game.PlaceId == udd then
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhubforud/main.lua", true))()
-				end
+    for i,shindoo in pairs(shindo) do
+	if game.PlaceId == shindoo then 
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/main.lua", true))()
+	else
+		for i,udd in pairs(ud) do
+			if game.PlaceId == udd then
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhubforud/main.lua", true))()
 			end
 		end
 	end
-	
-	
-	
 end
+	
    
