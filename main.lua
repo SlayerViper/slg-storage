@@ -43,58 +43,72 @@ TextColor = Color3.fromRGB(255, 255, 255)
 
 --First Page
 local page = scorpion:addPage("Main", 5012544693)
-local autofarmspd
-getgenv().speed = 500
-
-page:addSliderS("Teleport Speed", 500, 100, 1000, function(autofarmspeed)
-		autofarmspd = autofarmspeed
-		getgenv().speed = autofarmspd
-	end)
 
 --Two Page
 local page2 = scorpion:addPage("Autofarm", 5012544693)
 local Farm = page2:addSection("Auto Farm")
 local EFarm = page2:addSection("Event Farm")
+local autofarmspd
+getgenv().speed = 500
 
-local function callback(Text)
-	if Text == "Yes" then
-		toTarget(player.Character.HumanoidRootPart.Position,partname.Part.Position,CFrame.new(game:GetService("Workspace")[partname].Part.Position))
-	elseif Text == "No" then
-		print("false")
+	local function callback(Text)
+		if Text == "Yes" then
+		for _,g in pairs(partname:GetDescendants()) do
+ 			if g:IsA("Part") then
+			toTarget(player.Character.HumanoidRootPart.Position,g.Position,CFrame.new(game:GetService("Workspace")[g].Position))
+			end
+		end
+		elseif Text == "No" then
+			print("false")
+		end
 	end
-end
+
+	function SendNotify()
+	game.StarterGui:SetCore("SendNotification", {
+	     	Title = "Part Added! Random Name = Egg";
+	     	Text = "Part Name:", partname;
+	     	Icon = "";
+	     	Duration = 5;
+	     	Button1 = "Yes";
+	     	Button2 = "No";
+	     	Callback = NotificationBindable;
+	})
+	end
 
 	local autofarm
 	Farm:addToggle("Auto Farm", nil, function(bool)
 		autofarm = bool
 	end)
 
+	Farm:addSliderS("Teleport Speed", 500, 100, 1000, function(autofarmspeed)
+		autofarmspd = autofarmspeed
+		getgenv().speed = autofarmspd
+	end)
+
 	local eventfarm
 	EFarm:addToggle("Event Farm", nil, function(bool)
 		eventfarm = bool
       
-      if eventfarm == true then
-        game.Workspace.ChildAdded:Connect(function(added)
-	     print(added,"Part Added")
-	
-	     partname = added
-	
-	     game.StarterGui:SetCore("SendNotification", {
-	     	Title = "Part Added! (Random Name = Easter Egg)";
-	     	Text = "Part Name:", added;
-	     	Icon = "";
-	     	Duration = 5;
-	     	Button1 = "Yes";
-	     	Button2 = "No";
-	     	Callback = NotificationBindable;
-	     })
-       end)
+	if eventfarm == true then
+	game.Workspace.ChildAdded:Connect(function(added)
+		for _,g in pairs(added:GetDescendants()) do
+ 			if g:IsA("Part") then
+				print(added,"Added.")
+				partname = added
+				SendNotify()
+			end
+		end
+	end)
          
-      end
+	end
 	end)
 
 EFarm:addButton("if not send notify (teleport egg)", function()
-	player.Character:WaitForChild("HumanoidRootPart").Position = partname.Position
+	for _,g in pairs(partname:GetDescendants()) do
+ 		if g:IsA("Part") then
+			toTarget(player.Character.HumanoidRootPart.Position,g.Position,CFrame.new(game:GetService("Workspace")[g].Position))
+		end
+	end
 	scorpion:Notify("Scorpion Hub", "Teleported!")
 end)
 
