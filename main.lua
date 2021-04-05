@@ -22,7 +22,7 @@ function toTarget(pos, targetPos, targetCFrame)
     if not tween then return err end
 end
 
-local NotificationBindable == Instance.new("BindableFunction")
+local NotificationBindable = Instance.new("BindableFunction")
 NotificationBindable.OnInvoke = callback
 local partname
 
