@@ -18,17 +18,18 @@ function IsAllowed(player)
 	end
 end
 
-function loadd()
-for i,shindoo in pairs(shindo) do
-	if game.PlaceId == shindoo then 
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/main", true))()
-   elseif game.PlaceId == ud then
-         print("Coming Soon")
-   end
-end
-
 if loaded then
     if (not IsAllowed(player)) then return end
-    loadd()
+	
+    	for i,shindoo in pairs(shindo) do
+		if game.PlaceId == shindoo then 
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/main", true))()
+		elseif game.PlaceId == ud then
+			print("Coming Soon")
+		end
+	end
+	
+	
+	
 end
    
