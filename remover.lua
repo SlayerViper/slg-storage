@@ -3,4 +3,6 @@ local ui = CoreGui:WaitForChild("ScreenGui")
 
 if ui ~= nil then
   ui:Destroy()
+  print("Success")
 end
+print("OK")
