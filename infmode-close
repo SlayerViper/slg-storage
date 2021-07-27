@@ -1,2 +1,0 @@
-local player = game.Players.LocalPlayer
-        player.Character:BreakJoints()
