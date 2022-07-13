@@ -207,7 +207,7 @@ Title.BorderSizePixel = 0
 Title.Size = UDim2.new(0, 250, 0, 20)
 Title.Font = Enum.Font.SourceSans
 Title.TextSize = 18
-Title.Text = "Custom ScorpionHub IY v"..ver
+Title.Text = "ScorpionHub IY v"..ver
 Title.TextColor3 = Color3.new(1, 1, 1)
 Title.ZIndex = 10
 table.insert(shade1,Title)
@@ -8402,16 +8402,17 @@ addcmd('checkallhealth',{'cah'},function(args, speaker)
 	for i,obj in pairs(game.Players:GetChildren()) do
 		print(obj.Name..": "..obj.Character.Humanoid.Health)
 	end
+	print("-------------------------------------------")
 end)
 
 addcmd('btfkillall',{'baka'},function(args, speaker)
 	local deadNumber = 0
 	getgenv().BTFSettingKA = args[1];
 
-	notify('in progress..','transaction is in progress')
+	notify('in progress..','Transaction is in progress')
 	wait(args[2])
-	notify('Progress Started','progress is in started')
-	warn(getgenv().BTFSettingKA)
+	notify('Progress Started - '..getgenv().BTFSettingKA,'Progress is in started')
+	warn("---------------------------------------")
 
 	local function KillAll()
 		for i,obj in pairs(game.Players:GetChildren()) do
@@ -8450,7 +8451,7 @@ addcmd('btfkillall',{'baka'},function(args, speaker)
 				end
 			end
 		end
-		warn("-------------------------------------------")
+		
 	end
 
 	if tostring(args[1]) == "one" then
