@@ -4216,6 +4216,7 @@ end
 
 CMDs = {}
 CMDs[#CMDs + 1] = {NAME = 'discord / support / help', DESC = 'Invite to the Infinite Yield support server.'}
+CMDs[#CMDs + 1] = {NAME = 'btfkillall / baka {start delay} {value} {not target} {damage} {loop time}', DESC = 'Kills everyone through Nocol bug in btf (only for btf).'}
 CMDs[#CMDs + 1] = {NAME = 'console', DESC = 'Loads old Roblox console'}
 CMDs[#CMDs + 1] = {NAME = 'explorer / dex', DESC = 'Opens DEX explorer'}
 CMDs[#CMDs + 1] = {NAME = 'remotespy / rspy', DESC = 'Opens FrostHook Spy'}
