@@ -4216,7 +4216,8 @@ end
 
 CMDs = {}
 CMDs[#CMDs + 1] = {NAME = 'discord / support / help', DESC = 'Invite to the Infinite Yield support server.'}
-CMDs[#CMDs + 1] = {NAME = 'btfkillall / baka {start delay} {value} {not target} {damage} {loop time}', DESC = 'Kills everyone through Nocol bug in btf (only for btf).'}
+CMDs[#CMDs + 1] = {NAME = 'btfkillall / baka {loop value} {start delay} {not target} {damage} {loop time}', DESC = 'Kills everyone through Nocol bug in btf (only for btf). ex: {loop value} {start delay} {not target} {damage} {loop time}'}
+CMDs[#CMDs + 1] = {NAME = 'nocolconfig / ncc', DESC = 'Nocol configs. {String2} {Number8} {Number6} {Remote}'}
 CMDs[#CMDs + 1] = {NAME = 'console', DESC = 'Loads old Roblox console'}
 CMDs[#CMDs + 1] = {NAME = 'explorer / dex', DESC = 'Opens DEX explorer'}
 CMDs[#CMDs + 1] = {NAME = 'remotespy / rspy', DESC = 'Opens FrostHook Spy'}
@@ -6141,7 +6142,7 @@ end)
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if State == Enum.TeleportState.Started then
 		if KeepInfYield and queueteleport then
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/SlayerViper/storage/scorpionhub/yield'))()")
 		end
 	end
 end)
@@ -8385,32 +8386,86 @@ addcmd('creatorid',{'creator'},function(args, speaker)
 	end
 end)
 
+addcmd('print',{'prr'},function(args, speaker)
+	print(args[1],args[2],args[3],args[4],args[5],args[6],args[7],args[8],args[9],args[10])
+end)
+
+addcmd('nocolconfig',{'ncc'},function(args, speaker)
+	getgenv().BTFString2 = args[1]
+	getgenv().BTFNumber8 = args[2]
+	getgenv().BTFNumber6 = args[3]
+	getgenv().BTFRemote = args[4]
+	notify('Reason',getgenv().BTFString2.."/"..getgenv().BTFNumber8.."/"..getgenv().BTFNumber6.."/"..getgenv().BTFRemote)
+end)
+
+addcmd('checkallhealth',{'cah'},function(args, speaker)
+	for i,obj in pairs(game.Players:GetChildren()) do
+		print(obj.Name..": "..obj.Character.Humanoid.Health)
+	end
+end)
+
 addcmd('btfkillall',{'baka'},function(args, speaker)
-	getgenv().BTFSettingKA = args[2];
+	local deadNumber = 0
+	getgenv().BTFSettingKA = args[1];
 
-		print("Loading")
-		wait(args[1])
-		print("Started")
+	notify('in progress..','transaction is in progress')
+	wait(args[2])
+	notify('Progress Started','progress is in started')
+	warn(getgenv().BTFSettingKA)
 
-while wait(args[5]) do
-	if getgenv().BTFSettingKA == true then
+	local function KillAll()
 		for i,obj in pairs(game.Players:GetChildren()) do
-			if obj.Name == args[3] then else
+			if obj.Name == tostring(args[3]) then else
 				local ohString1 = "hit"
 				local ohString2 = "clqlRnfFxIiREgfKldPohwOdQhrpDHTMdrY"
 				local ohNumber3 = args[4]
-				local ohInstance4 = obj.Character.Humanoid --[[ PARENTED TO NIL OR DESTROYED ]]
-				local ohInstance5 = obj.Character.Torso --[[ PARENTED TO NIL OR DESTROYED ]]
-				local ohNumber6 = 1
+				local ohInstance4 = obj.Character.Humanoid
+				local ohInstance5 = obj.Character.Torso
+				local ohNumber6 = 9
+
+				if getgenv().BTFNumber6 == nil then
+					ohNumber6 = 1
+				else
+					ohNumber6 = getgenv().BTFNumber6
+				end
+				
 				local ohVector37 = -0.2646366357803345, -0.11515152454376221, -0.957448422908783
-				local ohNumber8 = 12.805087089538574
-		
+				local ohNumber8 = nil
+
+				if getgenv().BTFNumber8 == nil then
+					ohNumber8 = 12.805087089538574
+				else
+					ohNumber8 = getgenv().BTFNumber8
+				end
+
 				game:GetService("ReplicatedStorage").AgFxdPXJkeuYZwYYZicNOCOL_BTFFUNCTIONuMhaHnqPttgMlKvGFhEvDkAY:InvokeServer(ohString1, ohString2, ohNumber3, ohInstance4, ohInstance5, ohNumber6, ohVector37, ohNumber8)
+				
+
+				if ohInstance4.Health == 0 then
+					deadNumber = deadNumber+1
+
+					notify('Everyone in GAYTF was killed!',obj.Name.." ["..deadNumber.."] ".."Total Player: "..i)
+				else
+					warn(obj.Name.." God mode or forcefield. Health:"..ohInstance4.Health) 
+				end
 			end
 		end
+		warn("-------------------------------------------")
 	end
-end
-print("Killed All from GAYTF")
+
+	if tostring(args[1]) == "one" then
+		KillAll()
+	elseif tostring(args[1]) == "test" then
+		print(args[1].." "..args[2].." "..args[3].." "..args[4].." "..args[5])
+	end
+
+	while wait(args[5]) do
+		warn("...")
+		if getgenv().BTFSettingKA == "loop" then
+			warn("..,")
+			KillAll()
+		end	
+	end
 end)
 
 addcmd('copycreatorid',{'copycreator'},function(args, speaker)
