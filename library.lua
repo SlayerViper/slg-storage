@@ -2930,7 +2930,6 @@ function library:Load(options)
 
         local title = utility.create("Text", {
             Text = name,
-            TextWrapped = true,
             Font = Drawing.Fonts.Plex,
             Size = 13,
             Position = UDim2.new(0.5, 0, 0, 3),
