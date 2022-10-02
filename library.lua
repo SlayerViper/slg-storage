@@ -2748,6 +2748,8 @@ function library:Watermark(str)
     function watermarktypes:Hide()
         open = not open
         watermark.Visible = open
+        
+        print(watermark.Parent)
     end
 
     function watermarktypes:Set(str)
