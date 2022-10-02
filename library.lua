@@ -2933,7 +2933,7 @@ function library:Load(options)
         local title = utility.create("Text", {
             Text = name,
             Font = Drawing.Fonts.Plex,
-            Size = 13,
+            Size = 11,
             Position = UDim2.new(0.5, 0, 0, 3),
             Theme = #self.tabtoggles == 1 and "Text" or "Disabled Text",
             ZIndex = 7,
@@ -2948,7 +2948,7 @@ function library:Load(options)
             Transparency = 0,
             Visible = #self.tabs == 0,
             Parent = tabholder,
-            Size = UDim2.new(1, -16, 1, -16),
+            Size = UDim2.new(1, -12, 1, -16),
             Position = UDim2.new(0, 8, 0, 8)
         })
 
@@ -2962,7 +2962,7 @@ function library:Load(options)
         local column1 = utility.create("Square", {
             Transparency = 0,
             Parent = tab,
-            Size = UDim2.new(0.5, -4, 1, 0)
+            Size = UDim2.new(0.5, -3, 1, 0)
         })
 
         column1:AddListLayout(12)
@@ -2971,8 +2971,8 @@ function library:Load(options)
         local column2 = utility.create("Square", {
             Transparency = 0,
             Parent = tab,
-            Size = UDim2.new(0.5, -4, 1, 0),
-            Position = UDim2.new(0.5, 4, 0, 0)
+            Size = UDim2.new(0.5, -3, 1, 0),
+            Position = UDim2.new(0.5, 3, 0, 0)
         })
 
         column2:AddListLayout(12)
